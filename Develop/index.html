@@ -38,7 +38,8 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script  type="text/javascript">
      // Initial array of time --
     var time =["9AM","10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
     
@@ -54,24 +55,27 @@
     // This code $("<div>") is all jQuery needs to create the start and end tag. (<div></div>)
     var a = $("<div>");
       a.addClass("row");
-      a.$("id","row[i]");
-      a.text(time[i]);
-      console.log(time[i]);
-    $(".container").append(a);
+    
     var b = $("<div>");
       b.addClass("col-1 hour");
-    
+      b.text(time[i]);
+      console.log("i=",i);
+      console.log(time[i]);
+      $(".row").append(b);
     var c = $("<div>");
       c.addClass("col-10 future");
-    
+      $(".row").append(c);
     var d = $("<button>");
       d.addClass("col-1 saveBtn");
-      d.text("Save &#10004");
-    $("#row[i]").append(b,c,d);
+      d.text("Save");
+    $(".row").append(d);
+    $(".container").append(a);
+  
   
   
   }  
     // }
+    // renderTime();
     
     </script>
   </body>
