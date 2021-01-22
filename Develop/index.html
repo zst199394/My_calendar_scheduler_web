@@ -57,23 +57,20 @@
       a.addClass("row");
       a.attr("id",time[i]);
       $(".container").append(a);
-      var timeName = a.attr("id"); //??????
+      var timeName = a.attr("id"); 
       console.log(timeName);
     var b = $("<div>");
       b.addClass("col-1 hour");
       b.text(time[i]);
       console.log("i=",i);
-      $(".row").append(b);
-      //$("#timeName").append(b); ??????
+      //  $("#" +timeName).append(b); 
     var c = $("<div>");
       c.addClass("col-10 future");
-      $(".row").append(c);
-      //$("#timeName").append(c); ????
+      // $("#" +timeName).append(c); 
     var d = $("<button>");
       d.addClass("col-1 saveBtn");
       d.text("Save");
-      $(".row").append(d);
-    //$("#timeName").append(d);?????
+     $("#" +timeName).append(b,c,d);
 
   
   
