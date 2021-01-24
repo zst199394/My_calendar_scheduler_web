@@ -18,11 +18,11 @@ textarea{
 }
 
 .display-3 {
-  text-shadow: 5px 5px 9px rgb(29, 189, 165);
+  text-shadow: 5px 5px 9px rgb(21, 52, 233);
 }
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: rgb(214, 250, 236);
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
@@ -45,9 +45,10 @@ textarea{
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px solid #000000;
+  background-color: #9c43e9;
+  padding-top: 13px;
+  color: white;
+  border-top: 2px solid #000000;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -63,7 +64,7 @@ textarea{
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #1cdf8b;
   color: white;
 }
 
@@ -71,7 +72,7 @@ textarea{
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background-color: #ed7d1b;
   color: white;
 }
 
