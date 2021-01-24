@@ -26,14 +26,14 @@
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead"></p>            <!--???????-->
+      <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
       <div class="row">
         <div class="col-1 hour">...</div> 
         <textarea class="col-10 future">...</textarea>
-        <button class="col-1 saveBtn">Save &#10004</button> 
+        <button class="col-1 saveBtn">...</button> 
       </div>
     </div>
 
@@ -42,14 +42,13 @@
     <script src="https://momentjs.com/"></script>
     <script  type="text/javascript">
 
-    var current =moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-    console.log(current);
+    var current = moment().format("dddd, MMMM Do YYYY, h:mm:ss A");
+    var currentHour = moment().format("hA");
+    console.log(current,currentHour);
     $("#currentDay").text(current);
      // Initial array of time --
     var time =["9AM","10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
-    
     // Function for making div for each time block
-    // function renderTime() {                             ???????????
     // Deleting the time prior to adding new movies
     // (this is necessary otherwise we will have repeat hours)
     $(".container").empty();
@@ -68,19 +67,24 @@
     var b = $("<div>");
       b.addClass("col-1 hour");
       b.text(time[i]);
-      //  $("#" +timeName).append(b); 
     var c = $("<textarea>");
-      c.addClass("col-10 future");
+      c.addClass("col-10 past");
+    // if (currentHour === timeName){
+    //   c.addClass("col-10 present");
+    // }
+    // else {
+    //   c.addClass("col-10 future");
+    // } 
       c.attr("id","text" +i);
-      // $("#" +timeName).append(c); 
+    if(localStorage.getItem(time[i]) != ""){
+      c.val(localStorage.getItem(time[i]));
+    }
     var d = $("<button>");
       d.addClass("col-1 saveBtn");
-      d.text("Save");
+      d.html("Save &#10004");
       d.attr("id","btn" +i);
      $("#" +timeName).append(b,c,d);
   }  
-
-      
 
     function savePlan(){
       // localStorage.setItem("planText", JSON.stringfy(planText));
@@ -98,18 +102,10 @@
       var localTime = timeNow;
       localStorage.setItem(localTime, JSON.stringify(localPlan));
       console.log("this function works");
-          // render user exsist plan
-      var savedPlan = localStorage.getItem(localPlan);
-      var  savedTime =localStorage.getItem(localTime);
-      if ( timeName === localTime){
-        console.log("savedTime :"+savedTime , "savedPlan :"+savedPlan);
-        c.text = savedPlan;
-      }
-    });
 
+    });
     }
-    savePlan();
-    
+    savePlan();  
     </script>
   </body>
 </html>
