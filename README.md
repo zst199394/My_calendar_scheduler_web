@@ -1,6 +1,6 @@
 # My_calendar_scheduler_web
 Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
- * my web page : https://github.com/zst199394/My_calendar_scheduler_web 
+ * my web page : https://zst199394.github.io/My_calendar_scheduler_web/
 
 ![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
 
