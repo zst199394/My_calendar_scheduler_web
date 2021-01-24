@@ -43,11 +43,12 @@
     <script  type="text/javascript">
 
     var current = moment().format("dddd, MMMM Do YYYY, h:mm:ss A");
-    var currentHour = moment().format("hA");
-    console.log(current,currentHour);
+    var currentHour = moment().format("H");
+    console.log(current);
     $("#currentDay").text(current);
      // Initial array of time --
     var time =["9AM","10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
+    var time24 =["9","10","11","12","13","14","15","16","17"];
     // Function for making div for each time block
     // Deleting the time prior to adding new movies
     // (this is necessary otherwise we will have repeat hours)
@@ -67,15 +68,18 @@
     var b = $("<div>");
       b.addClass("col-1 hour");
       b.text(time[i]);
+      b.attr("id",time24[i]);
+      console.log( "div:"+time24[i],"currentHour:"+currentHour)
     var c = $("<textarea>");
+    if (time24[i] < currentHour){
       c.addClass("col-10 past");
-    // if (currentHour === timeName){
-    //   c.addClass("col-10 present");
-    // }
-    // else {
-    //   c.addClass("col-10 future");
-    // } 
+    } else if (time24[i] === currentHour){
+      c.addClass("col-10 present");
+    } else {
+      c.addClass("col-10 future");
+    } 
       c.attr("id","text" +i);
+    // grab the exsist plan from local storage
     if(localStorage.getItem(time[i]) != ""){
       c.val(localStorage.getItem(time[i]));
     }
@@ -87,9 +91,6 @@
   }  
 
     function savePlan(){
-      // localStorage.setItem("planText", JSON.stringfy(planText));
-      // console.log("this function works");
-    
     $(".saveBtn").on("click", function(){
      console.log("this.id ="+this.id);
       event.preventDefault();
@@ -97,7 +98,7 @@
       var timeNow= $(this).parent().attr("id");
       console.log("planText :"+ planText);
       console.log("timeNow: "+timeNow);
-      // savePlan();  // ??????????????
+      // save the input plan to local storage
       var localPlan = planText;
       var localTime = timeNow;
       localStorage.setItem(localTime, JSON.stringify(localPlan));
