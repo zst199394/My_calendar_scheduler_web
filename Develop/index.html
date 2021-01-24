@@ -26,13 +26,13 @@
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead">The day is:</p>            <!--???????-->
+      <p id="currentDay" class="lead"></p>            <!--???????-->
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
       <div class="row">
         <div class="col-1 hour">...</div> 
-        <div class="col-10 future">...</div>
+        <textarea class="col-10 future">...</textarea>
         <button class="col-1 saveBtn">Save &#10004</button> 
       </div>
     </div>
@@ -41,6 +41,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://momentjs.com/"></script>
     <script  type="text/javascript">
+
+    var current =moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    console.log(current);
+    $("#currentDay").text(current);
      // Initial array of time --
     var time =["9AM","10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
     
@@ -76,18 +80,35 @@
      $("#" +timeName).append(b,c,d);
   }  
 
-    // funtion savePlan(){
-    //   localStorage.setItem("planText", JSON.stringfy(planText));
-
-    // }
-    $(".saveBtn").on("click", function(event){
-     console.log(this.id);
-      event.preventDefault();
-      var planText = $(textarea).val().trim();
-      savePlan();  // ??????????????
       
+
+    function savePlan(){
+      // localStorage.setItem("planText", JSON.stringfy(planText));
+      // console.log("this function works");
+    
+    $(".saveBtn").on("click", function(){
+     console.log("this.id ="+this.id);
+      event.preventDefault();
+      var planText = $(this).siblings("textarea").val().trim();
+      var timeNow= $(this).parent().attr("id");
+      console.log("planText :"+ planText);
+      console.log("timeNow: "+timeNow);
+      // savePlan();  // ??????????????
+      var localPlan = planText;
+      var localTime = timeNow;
+      localStorage.setItem(localTime, JSON.stringify(localPlan));
+      console.log("this function works");
+          // render user exsist plan
+      var savedPlan = localStorage.getItem(localPlan);
+      var  savedTime =localStorage.getItem(localTime);
+      if ( timeName === localTime){
+        console.log("savedTime :"+savedTime , "savedPlan :"+savedPlan);
+        c.text = savedPlan;
+      }
     });
-  
+
+    }
+    savePlan();
     
     </script>
   </body>
