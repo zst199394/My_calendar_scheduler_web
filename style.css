@@ -4,6 +4,9 @@ body {
   font-size: 16px;
   line-height: 1;
 }
+header {
+  border-style: solid;
+}
 
 textarea{
   background: transparent;
@@ -14,6 +17,9 @@ textarea{
   padding: 10px;
 }
 
+.display-3 {
+  text-shadow: 5px 5px 9px rgb(29, 189, 165);
+}
 .jumbotron {
   text-align: center;
   background-color: transparent;
